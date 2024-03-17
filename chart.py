@@ -7,15 +7,10 @@ from grid import Grid
 screen_width = 800
 screen_height = 600
 
-grid_size = 40  # Adjust this value to change the grid size
+grid_size = 6  # Adjust this value to change the grid size
 
 class PygameWindow:
     def __init__(self):
-        #self.root
-        #self.root.title("Pygame and Tkinter")
-        #self.root.geometry("800x600")
-
-        # Initialize pygame
         pygame.init()
         
         # Create the Pygame window and grid obj
@@ -25,37 +20,41 @@ class PygameWindow:
         self.is_running = True
         self.clock = pygame.time.Clock()
     
-    def run(self):
-        # Game loop
-        while self.is_running:
-            self.screen.fill((255, 255, 255))  # Fill the screen with white
-
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.is_running = False
-
-            # Draw the grid and axes
-            self.grid.draw_grid()
-            
-            # Example point plotting
+    def chartSolution(self):
+                    # Example point plotting
             point_a = (1, -1)
-            point_b = (-1, -3)
+            point_b = (-10, -3)
             self.grid.graph_line(point_a, point_b)      # Connecting line
             self.grid.plot_point(point_a, (0, 0, 255))  # Blue point
             self.grid.plot_point(point_b, (255, 0, 0))  # Red point
+    
+    def run(self):
+        # Game loop
+        while self.is_running:
+            self.screen.fill((255, 255, 255))
             
-            
+            self.handle_events()
+            self.grid.draw_grid()
+            self.chartSolution()
             
             pygame.display.flip()
             self.clock.tick(60)
-
-        # Quit Pygame
-        pygame.quit()
-        sys.exit()
+        
+        self.end()
+        
+    def handle_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.is_running = False
         
     def start(self):
         thread = threading.Thread(target=self.run)
         thread.start()
+        
+    def end(self):
+        self.is_running = False
+        pygame.quit()
+        sys.exit()
         
 #window = PygameWindow()
 #window.start()
