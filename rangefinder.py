@@ -94,9 +94,9 @@ def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz = 0):
         #print("ADDED!")
         #firingAzim += 180
     
-    #if ( angleTotal > 180):
+    if ( angleTotal > 180):
         #print("Spotter angle!")
-        #firingAzim += targAzim
+        firingAzim += targAzim
         #firingAzim = 360 - firingAzim
     
 

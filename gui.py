@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import rangefinder
+import chart
 
 def calculate():
     gunDist = int(gunDistEntry.get())
@@ -63,4 +64,6 @@ adjustedDistLabel.pack(pady=5)
 adjustedAzimLabel = ttk.Label(root, text="Adjusted Azimuth:")
 adjustedAzimLabel.pack(pady=5)
 
+app = chart.PygameWindow()
+app.start()
 root.mainloop()
