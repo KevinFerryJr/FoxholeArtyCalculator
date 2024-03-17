@@ -5,11 +5,11 @@ DistGun = 10
 # Dist to TARGET
 DistTarg = 10
 # Angle to GUN
-AngleGun = 90
+AngleGun = 45
 # Angle to Target
-AngleTarg = 0
+AngleTarg = 225
 # Horizantal Adjustment
-HorizAdjust = 1
+HorizAdjust = 0
 
 def lawOfCos(distA,distB,distC):
     resA = distB**2 - (distC**2 + distA**2)
@@ -86,13 +86,23 @@ def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz = 0):
     print(f"Distance: {firingDist}")
     
     firingAzim = lawOfCos(gunDist, targDist, firingDist)
+    
     #print(f"Firing Azim: {int(firingAzim)}")
+    angleTotal = gunAzim + targAzim
     
-    if (math.degrees(spotterAzim) > 180):
-        firingAzim = 360 - firingAzim
+    #if (gunAzim > targAzim):
+        #print("ADDED!")
+        #firingAzim += 180
     
-    if (gunAzim > targAzim):
-        firingAzim = 180 + firingAzim
+    #if ( angleTotal > 180):
+        #print("Spotter angle!")
+        #firingAzim += targAzim
+        #firingAzim = 360 - firingAzim
+    
+
+    #else:
+    #    print("SUBBED!")
+    #    firingAzim -= 180
     
     print(f"Azimuth: {firingAzim}")
     
@@ -100,4 +110,6 @@ def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz = 0):
     print(f"Adjusted Distance: {adjustedDist}")
     print(f"Adjusted Azimuth: {adjustedAzim}")
     
-    return int(firingDist), int(firingAzim), int(adjustedDist), int(adjustedAzim)
+    return firingDist, firingAzim , adjustedDist, adjustedAzim
+
+calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg, HorizAdjust)
