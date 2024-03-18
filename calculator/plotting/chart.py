@@ -2,8 +2,8 @@ import pygame
 import sys
 import threading
 import math
-from grid import Grid
-from camera import Camera
+from .grid import Grid
+from .camera import Camera
 
 # Screen dimensions
 screen_width = 800

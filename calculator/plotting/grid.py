@@ -31,7 +31,6 @@ class Grid:
         color = self.grid_color
         for y in range(-self.num_lines_y // 2, self.num_lines_y // 2 + 1):
             
-
             # Check if the current line is at a multiple of 5 units
             if y % 5 == 0:
                 color = (150,150,150)

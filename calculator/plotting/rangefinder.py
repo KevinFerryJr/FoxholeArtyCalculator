@@ -1,13 +1,5 @@
 import math
 
-# Dist to GUN
-DistGun = 10
-# Dist to TARGET
-DistTarg = 10
-# Angle to GUN
-AngleGun = 45
-# Angle to Target
-AngleTarg = 315
 def lawOfCos(distA,distB,distC):
     resA = distB**2 - (distC**2 + distA**2)
     resB = 2 * distC * distA
@@ -17,12 +9,10 @@ def lawOfCos(distA,distB,distC):
     return angleB
     
 def calculateLegs(hypotenuse, slope):
-    # Calculate the angle in radians using the arctangent (inverse tangent) of the slope
     angleRad = math.atan(slope)
     
-    # Calculate the lengths of sides using trigonometric functions
-    sideA = hypotenuse * math.cos(angleRad)  # Adjacent side
-    sideB = hypotenuse * math.sin(angleRad)  # Opposite side
+    sideA = hypotenuse * math.cos(angleRad) 
+    sideB = hypotenuse * math.sin(angleRad)
     
     return sideA, sideB
 
@@ -66,25 +56,14 @@ def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
 
 def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim):
     
-    #if(gunAzim>targAzim):
-    #    gunAzim = (gunAzim + 180) % 360
-    
     spotterAngle = calculateAngle(gunAzim,targAzim)
     #print(f"spotterAzim: {math.degrees(spotterAzim)}")
-    
-    #if(spotterAngle > 90):
-        #targAzim += 360
         
     firingDist = calculateDistance(spotterAngle, gunDist, targDist)
     #print(f"Distance: {firingDist}")
     
-    
     firingAzim = calculateFiringAzim(gunDist, gunAzim, targDist, targAzim)
-    
-
 
     print(f"Azimuth: {firingAzim}")
     
-    return firingDist, firingAzim #, adjustedDist, adjustedAzim
-
-#calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg)
+    return firingDist, firingAzim
