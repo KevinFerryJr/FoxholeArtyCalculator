@@ -37,6 +37,10 @@ def calculateAngle(startAngle, endAngle):
     #print(f"Spotter Angle: {math.degrees(angle)}")
     return angle
 
+def addAngles(angleA, angleB):
+    result = angleA + angleB
+    return result
+
 def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
     gunX = math.cos(math.radians(gunAzim)) * gunDist
     guny = math.sin(math.radians(gunAzim)) * gunDist
@@ -50,16 +54,20 @@ def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
     finalAngleRad = math.atan(finalY/finalX)
     finalAngleDeg = math.degrees(finalAngleRad)
     
-    if(gunAzim<targAzim):
+    angleTotal = addAngles(gunAzim, targAzim)
+    if(angleTotal > 360):
         finalAngleDeg+= 180
+    
+    if(gunAzim<targAzim):
+           finalAngleDeg= finalAngleDeg+180
 
-    result = round(finalAngleDeg, 3)
+    result = round(finalAngleDeg) % 360
     return result
 
 def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim):
     
     #if(gunAzim>targAzim):
-        #gunAzim += 360
+    #    gunAzim = (gunAzim + 180) % 360
     
     spotterAngle = calculateAngle(gunAzim,targAzim)
     #print(f"spotterAzim: {math.degrees(spotterAzim)}")
@@ -79,4 +87,4 @@ def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim):
     
     return firingDist, firingAzim #, adjustedDist, adjustedAzim
 
-calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg)
+#calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg)
