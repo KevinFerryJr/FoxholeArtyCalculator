@@ -3,6 +3,8 @@ from tkinter import ttk
 import rangefinder
 import chart
 
+app = chart.PygameWindow()
+
 def calculate():
     gunDist = int(gunDistEntry.get())
     gunAzim = int(gunAzimEntry.get())
@@ -16,7 +18,8 @@ def calculate():
     firingAzimLabel.config(text=f"Firing Azimuth: {firingAzim}")
     adjustedDistLabel.config(text=f"Adjusted Firing Distance: {adjustedDist}")
     adjustedAzimLabel.config(text=f"Adjusted Azimuth: {adjustedAzim}")
-
+    
+    app.solution.set(gunDist,gunAzim,targDist,targAzim)
 
 # Create the main window
 root = tk.Tk()
@@ -64,7 +67,7 @@ adjustedDistLabel.pack(pady=5)
 adjustedAzimLabel = ttk.Label(root, text="Adjusted Azimuth:")
 adjustedAzimLabel.pack(pady=5)
 
-app = chart.PygameWindow()
+
 app.start()
 root.mainloop()
 app.end()

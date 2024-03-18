@@ -5,9 +5,9 @@ DistGun = 10
 # Dist to TARGET
 DistTarg = 10
 # Angle to GUN
-AngleGun = 45
+AngleGun = 0
 # Angle to Target
-AngleTarg = 225
+AngleTarg = 90
 # Horizantal Adjustment
 HorizAdjust = 0
 
@@ -94,15 +94,10 @@ def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz = 0):
         #print("ADDED!")
         #firingAzim += 180
     
-    if ( angleTotal > 180):
+    #if ( angleTotal > 180):
         #print("Spotter angle!")
-        firingAzim += targAzim
+    #firingAzim += min(gunAzim, targAzim)
         #firingAzim = 360 - firingAzim
-    
-
-    #else:
-    #    print("SUBBED!")
-    #    firingAzim -= 180
     
     print(f"Azimuth: {firingAzim}")
     
@@ -112,4 +107,4 @@ def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz = 0):
     
     return firingDist, firingAzim , adjustedDist, adjustedAzim
 
-calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg, HorizAdjust)
+#calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg, HorizAdjust)
