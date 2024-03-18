@@ -10,14 +10,14 @@ def calculate():
     gunAzim = int(gunAzimEntry.get())
     targDist = int(targDistEntry.get())
     targAzim = int(targAzimEntry.get())
-    adjHoriz = int(adjHorizEntry.get())
+    #adjHoriz = int(adjHorizEntry.get())
     
-    firingDist, firingAzim, adjustedDist, adjustedAzim = rangefinder.calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz)
+    firingDist, firingAzim = rangefinder.calculateFiringSolution(gunDist, gunAzim, targDist, targAzim)
 
     firingDistLabel.config(text=f"Firing Distance: {firingDist}")
     firingAzimLabel.config(text=f"Firing Azimuth: {firingAzim}")
-    adjustedDistLabel.config(text=f"Adjusted Firing Distance: {adjustedDist}")
-    adjustedAzimLabel.config(text=f"Adjusted Azimuth: {adjustedAzim}")
+    #adjustedDistLabel.config(text=f"Adjusted Firing Distance: {adjustedDist}")
+    #adjustedAzimLabel.config(text=f"Adjusted Azimuth: {adjustedAzim}")
     
     app.solution.set(gunDist,gunAzim,targDist,targAzim)
 
@@ -46,10 +46,10 @@ targAzimLabel.pack()
 targAzimEntry = ttk.Entry(root)
 targAzimEntry.pack()
 
-adjHorizLabel = ttk.Label(root, text="Horizontal Adjustment:")
-adjHorizLabel.pack()
-adjHorizEntry = ttk.Entry(root)
-adjHorizEntry.pack()
+#adjHorizLabel = ttk.Label(root, text="Horizontal Adjustment:")
+#adjHorizLabel.pack()
+#adjHorizEntry = ttk.Entry(root)
+#adjHorizEntry.pack()
 
 calculateButton = ttk.Button(root, text="Calculate", command=calculate)
 calculateButton.pack(pady=5)
@@ -61,11 +61,11 @@ firingDistLabel.pack(pady=5)
 firingAzimLabel = ttk.Label(root, text="Firing Azimuth:")
 firingAzimLabel.pack(pady=5)
 
-adjustedDistLabel = ttk.Label(root, text="Adjusted Firing Distance:")
-adjustedDistLabel.pack(pady=5)
+#adjustedDistLabel = ttk.Label(root, text="Adjusted Firing Distance:")
+#adjustedDistLabel.pack(pady=5)
 
-adjustedAzimLabel = ttk.Label(root, text="Adjusted Azimuth:")
-adjustedAzimLabel.pack(pady=5)
+#adjustedAzimLabel = ttk.Label(root, text="Adjusted Azimuth:")
+#adjustedAzimLabel.pack(pady=5)
 
 
 app.start()

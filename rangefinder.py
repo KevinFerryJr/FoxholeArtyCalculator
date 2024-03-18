@@ -5,12 +5,9 @@ DistGun = 10
 # Dist to TARGET
 DistTarg = 10
 # Angle to GUN
-AngleGun = 0
+AngleGun = 45
 # Angle to Target
-AngleTarg = 90
-# Horizantal Adjustment
-HorizAdjust = 0
-
+AngleTarg = 315
 def lawOfCos(distA,distB,distC):
     resA = distB**2 - (distC**2 + distA**2)
     resB = 2 * distC * distA
@@ -21,13 +18,13 @@ def lawOfCos(distA,distB,distC):
     
 def calculateLegs(hypotenuse, slope):
     # Calculate the angle in radians using the arctangent (inverse tangent) of the slope
-    angle_rad = math.atan(slope)
+    angleRad = math.atan(slope)
     
     # Calculate the lengths of sides using trigonometric functions
-    side_a = hypotenuse * math.cos(angle_rad)  # Adjacent side
-    side_b = hypotenuse * math.sin(angle_rad)  # Opposite side
+    sideA = hypotenuse * math.cos(angleRad)  # Adjacent side
+    sideB = hypotenuse * math.sin(angleRad)  # Opposite side
     
-    return side_a, side_b
+    return sideA, sideB
 
 def calculateDistance(angleC, distA, distB):
     distSquared = distA**2 + distB**2 - 2*distA*distB* math.cos(angleC)
@@ -35,76 +32,51 @@ def calculateDistance(angleC, distA, distB):
     #print(f"Firing Distance: {distC}")
     return distC
 
-def calculateAngle(angle1, angle2):
-    angle = abs(math.radians(angle1 - angle2))
+def calculateAngle(startAngle, endAngle):
+    angle = abs(math.radians(startAngle - endAngle))
     #print(f"Spotter Angle: {math.degrees(angle)}")
     return angle
 
-def adjustSolution(firingAzim, firingDist, adjHoriz):
-    # Calculate the tangent of the original angle to determine the slope of the tangent line
-    firingAzimRad = math.radians(firingAzim)
-    secant = 1 / math.cos(firingAzimRad)
-    cosecant = 1 / math.sin(firingAzimRad)
-    slope = secant / cosecant
+def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
+    gunX = math.cos(math.radians(gunAzim)) * gunDist
+    guny = math.sin(math.radians(gunAzim)) * gunDist
     
-    #print(f"Slope of tan({firingAzim}): {slope}")
+    targX = math.cos(math.radians(targAzim)) * targDist
+    targy = math.sin(math.radians(targAzim)) * targDist
     
-    sideA, sideB = calculateLegs(adjHoriz, slope)
-    #print(f"sideA: {sideA}")
-    #print(f"sideB: {sideB}")
+    finalX = targX - gunX
+    finalY = targy - guny
     
-    cos = math.cos(firingAzimRad)
-    sin = math.sin(firingAzimRad)
- 
-    #print(f"cos: {cos}")
-    #print(f"sin: {sin}")
+    finalAngleRad = math.atan(finalY/finalX)
+    finalAngleDeg = math.degrees(finalAngleRad)
     
-    if(adjHoriz >= 0):  # ADJUST RIGHT
-        adjustedX = ((cos * firingDist)+abs(sideA))
-        adjustedY = ((sin * firingDist)+abs(sideB))
-    else:               # ADJUST LEFT
-        adjustedX = ((cos * firingDist)-abs(sideA))
-        adjustedY = ((sin * firingDist)-abs(sideB))
-    
-    #print(f"X: {adjustedX}")
-    #print(f"Y: {adjustedY}")
-    
-    adjustedDist = math.sqrt(adjustedX**2 + adjustedY**2)
-    #print(f"Adjusted Distance: {adjustedDist}")
-    
-    adjustedAzimRad = math.atan2(adjustedY, adjustedX) % (2*math.pi)
-    adjustedAzimDeg = math.degrees(adjustedAzimRad)
-    #print(f"Adjusted Azimuth: {adjustedAzimDeg}")
-    
-    return adjustedDist, adjustedAzimDeg
+    if(gunAzim<targAzim):
+        finalAngleDeg+= 180
 
-def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim, adjHoriz = 0):
-    spotterAzim = calculateAngle(gunAzim,targAzim)
+    result = round(finalAngleDeg, 3)
+    return result
+
+def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim):
+    
+    #if(gunAzim>targAzim):
+        #gunAzim += 360
+    
+    spotterAngle = calculateAngle(gunAzim,targAzim)
     #print(f"spotterAzim: {math.degrees(spotterAzim)}")
     
-    firingDist = calculateDistance(spotterAzim, gunDist, targDist)
-    print(f"Distance: {firingDist}")
+    #if(spotterAngle > 90):
+        #targAzim += 360
+        
+    firingDist = calculateDistance(spotterAngle, gunDist, targDist)
+    #print(f"Distance: {firingDist}")
     
-    firingAzim = lawOfCos(gunDist, targDist, firingDist)
     
-    #print(f"Firing Azim: {int(firingAzim)}")
-    angleTotal = gunAzim + targAzim
+    firingAzim = calculateFiringAzim(gunDist, gunAzim, targDist, targAzim)
     
-    #if (gunAzim > targAzim):
-        #print("ADDED!")
-        #firingAzim += 180
-    
-    #if ( angleTotal > 180):
-        #print("Spotter angle!")
-    #firingAzim += min(gunAzim, targAzim)
-        #firingAzim = 360 - firingAzim
-    
+
+
     print(f"Azimuth: {firingAzim}")
     
-    adjustedDist, adjustedAzim = adjustSolution(firingAzim, firingDist, adjHoriz)
-    print(f"Adjusted Distance: {adjustedDist}")
-    print(f"Adjusted Azimuth: {adjustedAzim}")
-    
-    return firingDist, firingAzim , adjustedDist, adjustedAzim
+    return firingDist, firingAzim #, adjustedDist, adjustedAzim
 
-#calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg, HorizAdjust)
+calculateFiringSolution(DistGun, AngleGun, DistTarg, AngleTarg)
