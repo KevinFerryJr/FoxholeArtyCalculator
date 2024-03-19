@@ -1,39 +1,39 @@
 import pygame
 
 class Grid:
-    def __init__(self, screen, camera, gridSize = 18):
-        self.gridSize = gridSize
+    def __init__(self, screen, camera):
+        self.gridSize = 18
         self.gridColor = (200, 200, 200)
         self.xAxisColor = (255, 0, 0)
         self.yAxisColor = (0, 255, 0)
         self.camera = camera
 
         self.screen = screen
-        self.screenWidth, self.screen_height = screen.get_size()
-        self.screenCenter = (self.screenWidth // 2, self.screen_height // 2)
+        self.screenWidth, self.screenHeight = screen.get_size()
+        self.screenCenter = (self.screenWidth // 2, self.screenHeight // 2)
         self.lineWidth = 2
-        self.numLinesX = (self.screenWidth // self.gridSize)*20
-        self.numLinesY = (self.screen_height // self.gridSize)*20
+        self.numLinesX = (self.screenWidth // self.gridSize)*100
+        self.numLinesY = (self.screenHeight // self.gridSize)*100
 
     def to_world_space(self, x, y):
         x -= self.screenWidth / 2
-        y -= self.screen_height / 2
+        y -= self.screenHeight / 2
         return x, y
 
     def to_screen_space(self, x, y):
         y *= -1
         x += self.screenWidth / 2
-        y += self.screen_height / 2
+        y += self.screenHeight / 2
         return x, y
 
     def drawHorizontalLines(self, lineWidth=1):
-        # Draw horizontal grid lines
         color = self.gridColor
         for y in range(-self.numLinesY // 2, self.numLinesY // 2 + 1):
             
-            # Check if the current line is at a multiple of 5 units
-            if y % 5 == 0:
-                color = (150,150,150)
+            if y % 10 == 0:
+                color = (150,150,150)    
+            elif self.gridSize < 10:
+                continue
             else:
                 color = self.gridColor
 
@@ -43,20 +43,21 @@ class Grid:
         color = self.gridColor
         
     def drawVerticalLines(self, lineWidth=1):
-        # Draw vertical grid lines
         color = self.gridColor
+        
         for x in range(-self.numLinesX // 2, self.numLinesX // 2 + 1):
-            # Check if the current line is at a multiple of 5 units
-            if x % 5 == 0:
+            if x % 10 == 0:
                 color = (150,150,150)
+            elif self.gridSize < 10:
+                continue
             else:
                 color = self.gridColor
 
-            bottomPoint = (self.screenCenter[0] + x * self.gridSize + self.camera.offsetX, self.screen_height)
+            bottomPoint = (self.screenCenter[0] + x * self.gridSize + self.camera.offsetX, self.screenHeight)
             topPoint = (self.screenCenter[0] + x * self.gridSize + self.camera.offsetX, 0)
             pygame.draw.line(self.screen, color, topPoint, bottomPoint, lineWidth * lineWidth)
     
-    def draw_grid(self, lineWidth=1):
+    def drawGrid(self, lineWidth=1):
         self.drawVerticalLines(lineWidth)
         self.drawHorizontalLines(lineWidth)
         self.draw_axis(lineWidth)
@@ -80,6 +81,6 @@ class Grid:
         pygame.draw.line(self.screen, self.xAxisColor, xAxisLeft, xAxisRight, lineWidth * 2)
 
         # Draw Y-axis
-        yAxisTop = (self.screenCenter[0] + self.camera.offsetX, self.screen_height)
+        yAxisTop = (self.screenCenter[0] + self.camera.offsetX, self.screenHeight)
         yAxisBottom = (self.screenCenter[0] + self.camera.offsetX, 0)
         pygame.draw.line(self.screen, self.yAxisColor, yAxisTop, yAxisBottom, lineWidth * 2)
