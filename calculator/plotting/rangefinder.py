@@ -12,7 +12,7 @@ def calculateDistance(angleC, distA, distB):
     distSquared = distA**2 + distB**2 - 2*distA*distB* math.cos(angleC)
     distC = math.sqrt(distSquared)
     #print(f"Firing Distance: {distC}")
-    return round(distC)
+    return round(distC, 1)
 
 def calculateAngle(startAngle, endAngle):
     angle = abs(math.radians(startAngle - endAngle))

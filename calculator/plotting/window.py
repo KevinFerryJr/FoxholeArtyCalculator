@@ -10,39 +10,64 @@ class PygameWindow:
         pygame.init()
         pygame.display.set_caption("Plotting Chart")
         self.screen = pygame.display.set_mode((screenWidth, screenHeight))
+        
         self.camera = Camera()
         self.grid = Grid(self.screen, self.camera)
+        self.solution = Solution()
+        
         self.is_running = True
         self.clock = pygame.time.Clock()
-        self.solution = Solution()
 
+    def update(self):
+        self.camera.update(self.grid)
+    
+    def draw(self):
+        self.grid.drawGrid()
+        self.solution.drawSolution(self.solution.get(), self.grid)
+    
+    def events(self):
+            self.handleEvents()
+            self.handleKeyPressedEvents()
+    
     def run(self):
         # Game loop
         while self.is_running:
             self.screen.fill((255, 255, 255))
-            self.camera.update(self.grid)
-            self.handle_events()
-            self.grid.draw_grid()
-            self.solution.drawSolution(self.solution.get(), self.grid)
+
+            self.events()
+            self.update()
+            self.draw()
 
             pygame.display.flip()
             self.clock.tick(60)
 
-    def handle_events(self):
+    def handleKeyPressedEvents(self):
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_LEFT]:
+            self.camera.move(1, 0, self.grid)
+        if keys[pygame.K_RIGHT]:
+            self.camera.move(-1, 0, self.grid)
+        if keys[pygame.K_UP]:
+            self.camera.move(0, 1, self.grid)
+        if keys[pygame.K_DOWN]:
+            self.camera.move(0, -1, self.grid)
+            
+        if keys[pygame.K_a]:
+            self.camera.move(1, 0, self.grid)
+        if keys[pygame.K_d]:
+            self.camera.move(-1, 0, self.grid)
+        if keys[pygame.K_w]:
+            self.camera.move(0, 1, self.grid)
+        if keys[pygame.K_s]:
+            self.camera.move(0, -1, self.grid)        
+
+    def handleEvents(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 4:  # Scroll up
                 self.camera.zoom_in(self.grid)
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 5:  # Scroll down
                 self.camera.zoom_out(self.grid)
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    self.camera.move(10, 0, self.grid)  # Move left
-                elif event.key == pygame.K_RIGHT:
-                    self.camera.move(-10, 0, self.grid)  # Move right
-                elif event.key == pygame.K_UP:
-                    self.camera.move(0, 10, self.grid)  # Move up
-                elif event.key == pygame.K_DOWN:
-                    self.camera.move(0, -10, self.grid)  # Move down
 
     def start(self):
         thread = threading.Thread(target=self.run)
