@@ -43,7 +43,6 @@ def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
     if(gunAzim<targAzim):
            finalAngleDeg= finalAngleDeg+180
 
-    print(finalAngleDeg % 360)
     result = round(finalAngleDeg, 1) % 360
     return result
 

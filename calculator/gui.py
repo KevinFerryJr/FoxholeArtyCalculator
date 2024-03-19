@@ -1,9 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 from plotting import rangefinder
-from plotting import chart
+from plotting import window
 
-app = chart.PygameWindow()
+# Setup Plotting Window
+screenWidth = 800
+screenHeight = 600
+app = window.PygameWindow(screenWidth, screenHeight)
 
 def calculate():
     gunDist = float(gunDistEntry.get())
