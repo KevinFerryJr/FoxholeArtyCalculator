@@ -16,7 +16,7 @@ class PygameWindow:
         pygame.init()
         pygame.display.set_caption("Plotting Chart")
         self.screen = pygame.display.set_mode((screen_width, screen_height))
-        self.camera = Camera(self.screen)
+        self.camera = Camera()
         self.grid = Grid(self.screen, self.camera, grid_size)
         self.is_running = True
         self.clock = pygame.time.Clock()

@@ -1,8 +1,5 @@
 class Camera:
-    def __init__(self, screen):
-        self.screen = screen
-        self.screen_width, self.screen_height = screen.get_size()
-        self.zoom_factor = 1.0
+    def __init__(self):
         self.offset_x = 0
         self.offset_y = 0
 

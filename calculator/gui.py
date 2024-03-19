@@ -10,13 +10,11 @@ def calculate():
     gunAzim = float(gunAzimEntry.get())
     targDist = float(targDistEntry.get())
     targAzim = float(targAzimEntry.get())
+    app.solution.set(gunDist,gunAzim,targDist,targAzim)
     
     firingDist, firingAzim = rangefinder.calculateFiringSolution(gunDist, gunAzim, targDist, targAzim)
-
     firingDistLabel.config(text=f"Firing Distance: {firingDist}")
     firingAzimLabel.config(text=f"Firing Azimuth: {firingAzim}")
-    
-    app.solution.set(gunDist,gunAzim,targDist,targAzim)
 
 # Create the main window
 root = tk.Tk()

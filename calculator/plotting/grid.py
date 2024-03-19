@@ -55,7 +55,7 @@ class Grid:
 
             self.draw_axis(line_width)
 
-    def plot_point(self, coords, color, size=2):
+    def plot_point(self, coords, color, size=4):
         grid_x = coords[0] * self.grid_size + self.camera.offset_x
         grid_y = coords[1] * self.grid_size - self.camera.offset_y
         pygame.draw.circle(self.screen, color, self.to_screen_space(grid_x, grid_y), size)
