@@ -7,20 +7,12 @@ def lawOfCos(distA,distB,distC):
     angleB = math.degrees(math.acos(cosB))
     #print(f"Firing Azim: {angleB}")
     return angleB
-    
-def calculateLegs(hypotenuse, slope):
-    angleRad = math.atan(slope)
-    
-    sideA = hypotenuse * math.cos(angleRad) 
-    sideB = hypotenuse * math.sin(angleRad)
-    
-    return sideA, sideB
 
 def calculateDistance(angleC, distA, distB):
     distSquared = distA**2 + distB**2 - 2*distA*distB* math.cos(angleC)
     distC = math.sqrt(distSquared)
     #print(f"Firing Distance: {distC}")
-    return distC
+    return round(distC)
 
 def calculateAngle(startAngle, endAngle):
     angle = abs(math.radians(startAngle - endAngle))
@@ -51,19 +43,17 @@ def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
     if(gunAzim<targAzim):
            finalAngleDeg= finalAngleDeg+180
 
-    result = round(finalAngleDeg) % 360
+    result = round(finalAngleDeg, 1) % 360
     return result
 
 def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim):
-    
     spotterAngle = calculateAngle(gunAzim,targAzim)
     #print(f"spotterAzim: {math.degrees(spotterAzim)}")
-        
+    
     firingDist = calculateDistance(spotterAngle, gunDist, targDist)
     #print(f"Distance: {firingDist}")
     
     firingAzim = calculateFiringAzim(gunDist, gunAzim, targDist, targAzim)
-
-    print(f"Azimuth: {firingAzim}")
+    #print(f"Azimuth: {firingAzim}")
     
     return firingDist, firingAzim

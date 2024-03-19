@@ -1,22 +1,23 @@
 import tkinter as tk
 from tkinter import ttk
 from plotting import rangefinder
-from plotting import chart
+from plotting import window
 
-app = chart.PygameWindow()
+# Setup Plotting Window
+screenWidth = 800
+screenHeight = 600
+app = window.PygameWindow(screenWidth, screenHeight)
 
 def calculate():
-    gunDist = int(gunDistEntry.get())
-    gunAzim = int(gunAzimEntry.get())
-    targDist = int(targDistEntry.get())
-    targAzim = int(targAzimEntry.get())
+    gunDist = float(gunDistEntry.get())
+    gunAzim = float(gunAzimEntry.get())
+    targDist = float(targDistEntry.get())
+    targAzim = float(targAzimEntry.get())
+    app.solution.set(gunDist,gunAzim,targDist,targAzim)
     
     firingDist, firingAzim = rangefinder.calculateFiringSolution(gunDist, gunAzim, targDist, targAzim)
-
     firingDistLabel.config(text=f"Firing Distance: {firingDist}")
     firingAzimLabel.config(text=f"Firing Azimuth: {firingAzim}")
-    
-    app.solution.set(gunDist,gunAzim,targDist,targAzim)
 
 # Create the main window
 root = tk.Tk()
