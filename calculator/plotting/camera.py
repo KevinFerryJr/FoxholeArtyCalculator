@@ -14,12 +14,12 @@ class Camera:
     def zoom_in(self, grid):
         # Check if over min zoom
         if self.zoomFactor < self.maxZoom:
-            self.zoomFactor *= 1.05  # Increase zoom by 10%
+            self.zoomFactor *= 1.1  # Increase zoom by 10%
 
     def zoom_out(self, grid):
         # Check if under max zoom
         if self.zoomFactor > self.minZoom:
-            self.zoomFactor /= 1.05  # Decrease zoom by 10%
+            self.zoomFactor /= 1.1  # Decrease zoom by 10%
 
     def move(self, dx, dy, grid):
         self.targetX += dx * self.moveSpeed
