@@ -8,12 +8,12 @@ class Camera:
 
     def zoom_in(self, grid):
         # Check if over min zoom
-        if grid.grid_size < 20:
+        if grid.grid_size < 100:
             grid.grid_size += 1
 
     def zoom_out(self, grid):
         # Check if under max zoom
-        if grid.grid_size > 3:
+        if grid.grid_size > 1:
             grid.grid_size -= 1
 
     def move(self, dx, dy):

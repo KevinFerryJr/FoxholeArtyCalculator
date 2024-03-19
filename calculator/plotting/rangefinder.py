@@ -20,7 +20,7 @@ def calculateDistance(angleC, distA, distB):
     distSquared = distA**2 + distB**2 - 2*distA*distB* math.cos(angleC)
     distC = math.sqrt(distSquared)
     #print(f"Firing Distance: {distC}")
-    return distC
+    return round(distC)
 
 def calculateAngle(startAngle, endAngle):
     angle = abs(math.radians(startAngle - endAngle))
@@ -51,7 +51,8 @@ def calculateFiringAzim(gunDist, gunAzim, targDist, targAzim):
     if(gunAzim<targAzim):
            finalAngleDeg= finalAngleDeg+180
 
-    result = round(finalAngleDeg) % 360
+    print(finalAngleDeg % 360)
+    result = round(finalAngleDeg, 1) % 360
     return result
 
 def calculateFiringSolution(gunDist, gunAzim, targDist, targAzim):

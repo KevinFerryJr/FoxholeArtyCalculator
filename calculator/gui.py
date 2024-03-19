@@ -6,10 +6,10 @@ from plotting import chart
 app = chart.PygameWindow()
 
 def calculate():
-    gunDist = int(gunDistEntry.get())
-    gunAzim = int(gunAzimEntry.get())
-    targDist = int(targDistEntry.get())
-    targAzim = int(targAzimEntry.get())
+    gunDist = float(gunDistEntry.get())
+    gunAzim = float(gunAzimEntry.get())
+    targDist = float(targDistEntry.get())
+    targAzim = float(targAzimEntry.get())
     
     firingDist, firingAzim = rangefinder.calculateFiringSolution(gunDist, gunAzim, targDist, targAzim)
 

@@ -12,8 +12,8 @@ class Grid:
         self.screen_width, self.screen_height = screen.get_size()
         self.screen_center = (self.screen_width // 2, self.screen_height // 2)
         self.line_width = 2
-        self.num_lines_x = (self.screen_width // self.grid_size)*10
-        self.num_lines_y = (self.screen_height // self.grid_size)*10
+        self.num_lines_x = (self.screen_width // self.grid_size)*20
+        self.num_lines_y = (self.screen_height // self.grid_size)*20
 
     def to_world_space(self, x, y):
         x -= self.screen_width / 2
