@@ -7,7 +7,7 @@ class Camera:
         self.followSpeed = 0.1
         self.moveSpeed = 5
         
-        self.zoomFactor = 1.0
+        self.zoomFactor = 0.3
         self.minZoom = 0.1  # Minimum zoom factor
         self.maxZoom = 10.0  # Maximum zoom factor
 
