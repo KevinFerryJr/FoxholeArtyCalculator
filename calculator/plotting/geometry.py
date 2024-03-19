@@ -12,14 +12,16 @@ class Point(x,y,color):
         self.y = y
     
     def __add__(self, other):
-        dX = self.x + other.x, self.y
-        dY = other.y, self.color + other.color
-        return Point(dX + dY)
+        if type(other) == Point:
+            dX = self.x + other.x, self.y
+            dY = other.y, self.color + other.color
+            return Point(dX + dY)
     
     def __sub__(self, other):
-        dX = self.x - other.x, self.y
-        dY = other.y, self.color + other.color
-        return Point(dX - dY)
+        if type(other) == Point:
+            dX = self.x - other.x, self.y
+            dY = other.y, self.color + other.color
+            return Point(dX - dY)
     
 class Line(start, end):
     def __init__(self):
@@ -34,16 +36,20 @@ class Angle(value):
         self.value = (value) % 360
         
     def __add__(self, other):
-        return Angle(self.value + other.value)
+        if type(other) == Angle:
+            return Angle(self.value + other.value)
     
     def __sub__(self, other):
-        return Angle(self.value - other.value)
+        if type(other) == Angle:
+            return Angle(self.value - other.value)
     
     def __mul__(self, other):
-        return Angle(self.value * other.value)
+        if type(other) == Angle:
+            return Angle(self.value * other.value)
     
     def __truediv__(self, other):
-        return Angle(self.value / other.value)
+        if type(other) == Angle:
+            return Angle(self.value / other.value)
         
 class Color(R,G,B):
     def __init__():
@@ -60,13 +66,15 @@ class Color(R,G,B):
         self.b = b
         
     def __add__(self, other):
-        dR = (self.r + other.r) % 255
-        dG = (self.g + other.g) % 255
-        dB = (self.b + other.b) % 255
-        return Color(dR,dG,dB)
+        if type(other) == Color:
+            dR = (self.r + other.r) % 255
+            dG = (self.g + other.g) % 255
+            dB = (self.b + other.b) % 255
+            return Color(dR,dG,dB)
     
     def __sub__(self, other):
-        dR = (self.r - other.r) % 255
-        dG = (self.g - other.g) % 255
-        dB = (self.b - other.b) % 255
-        return Color(dR,dG,dB)
+        if type(other) == Color:
+            dR = (self.r - other.r) % 255
+            dG = (self.g - other.g) % 255
+            dB = (self.b - other.b) % 255
+            return Color(dR,dG,dB)

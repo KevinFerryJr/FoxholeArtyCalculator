@@ -4,7 +4,7 @@ class Camera:
         self.offsetY = 0
         self.targetX = 0
         self.targetY = 0
-        self.moveSpeed = 0.01
+        self.moveSpeed = 0.1
         
         self.zoom_factor = 1.0
         self.min_zoom = 0.1  # Minimum zoom factor

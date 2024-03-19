@@ -2,9 +2,9 @@ import math
 
 class Solution():
     def __init__(self):
-        self.point_a = (0,0)
-        self.point_b = (0,0)
-        self.point_c = (0,0)
+        self.pointA = (0,0)
+        self.pointB = (0,0)
+        self.pointC = (0,0)
     
     def set(self,gunDist,gunAngle,targDist,targAngle):
         cosA = math.cos(math.radians(gunAngle))
@@ -14,12 +14,12 @@ class Solution():
         sinB = math.sin(math.radians(targAngle))
         
         # Example point plotting
-        self.point_a = (cosA*gunDist, sinA*gunDist)
-        self.point_b = (cosB*targDist, sinB*targDist)
-        self.point_c = (0, 0)
+        self.pointA = (cosA*gunDist, sinA*gunDist)
+        self.pointB = (cosB*targDist, sinB*targDist)
+        self.pointC = (0, 0)
         
     def get(self):
-        return (self.point_a, self.point_b, self.point_c)
+        return (self.pointA, self.pointB, self.pointC)
     
     def drawSolution(self, solution, grid):
         grid.graph_line(solution[0], solution[1])  
