@@ -16,8 +16,11 @@ def calculate():
     app.solution.set(gunDist,gunAzim,targDist,targAzim)
     
     firingDist, firingAzim = rangefinder.calculateFiringSolution(gunDist, gunAzim, targDist, targAzim)
+    flippedAzim = (firingAzim+180) % 360
+    
     firingDistLabel.config(text=f"Firing Distance: {firingDist}")
     firingAzimLabel.config(text=f"Firing Azimuth: {firingAzim}")
+    flippedAzimLabel.config(text=f"Flipped Azimuth: {flippedAzim}")
 
 # Create the main window
 root = tk.Tk()
@@ -53,6 +56,9 @@ firingDistLabel.pack(pady=5)
 
 firingAzimLabel = ttk.Label(root, text="Firing Azimuth:")
 firingAzimLabel.pack(pady=5)
+
+flippedAzimLabel = ttk.Label(root, text="Flipped Azimuth:")
+flippedAzimLabel.pack(pady=5)
 
 
 app.start()
