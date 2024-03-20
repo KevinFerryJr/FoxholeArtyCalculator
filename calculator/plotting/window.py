@@ -6,18 +6,11 @@ from .camera import Camera
 from .solution import Solution
 
 class PygameWindow:
-    def __init__(self, screenWidth, screenHeight):
-        pygame.init()
-        pygame.display.set_caption("Plotting Chart")
-        self.screen = pygame.display.set_mode((screenWidth, screenHeight))
+    def __init__(self, title, screenWidth, screenHeight):
+        self.width = screenWidth
+        self.height = screenHeight
+        self.title = "Pygame Window"
         
-        self.camera = Camera()
-        self.grid = Grid(self.screen, self.camera)
-        self.solution = Solution()
-        
-        self.is_running = True
-        self.clock = pygame.time.Clock()
-
     def update(self):
         self.camera.update(self.grid)
     
@@ -70,6 +63,15 @@ class PygameWindow:
                 self.camera.zoom_out(self.grid)
 
     def start(self):
+        pygame.init()
+        pygame.display.set_caption(self.title)
+        self.screen = pygame.display.set_mode((self.width, self.height))
+        self.camera = Camera()
+        self.grid = Grid(self.screen, self.camera)
+        self.solution = Solution()
+        self.is_running = True
+        self.clock = pygame.time.Clock()
+        
         thread = threading.Thread(target=self.run)
         thread.start()
         self.thread = thread
