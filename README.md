@@ -19,7 +19,7 @@ This project is a Foxhole game artillery calculator designed to assist players i
 
 ### Using the Calculator
 - There are two ways you can use this tool, for static or dynamic spotting.
-- Generating a static firing solution:
+- __Generating a static firing solution__:
   - Generating a static firing solution is very simple.
   - Step 1: Input the angle & distance from the spotter to the target and press the calculate button.
   - Step 2: The calculator will display the necessary information for your artillery shot (Ignore flipped azimuth when spotting staticly).
