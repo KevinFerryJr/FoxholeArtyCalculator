@@ -15,7 +15,7 @@ This project is a Foxhole game artillery calculator designed to assist players i
 
 ### Running the Calculator
 - Navigate to the directory where the repository is located.
-- If you're running the python script directly, run `gui.py` as that is the project entry point. Otherwise, just run the `.exe` binary file and enjoy!
+- If you're running the python script directly, run `gui.py` as that is the project entry point. Otherwise, just run the `.exe` file from the release section and enjoy!
 
 ### Using the Calculator
 - There are two ways you can use this tool, for static or dynamic spotting.
@@ -31,7 +31,6 @@ This project is a Foxhole game artillery calculator designed to assist players i
 ## Features
 - Calculate distance and azimuth to the target.
 - Plotting chart to visualize firing solutions.
-- Display directional information for adjusting artillery aim.
 
 ## Tips for Accuracy
 - If calculating firing solutions for the 150mm cannon, dynamic spotting is recommended.
