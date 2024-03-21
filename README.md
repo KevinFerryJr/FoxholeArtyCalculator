@@ -21,15 +21,15 @@ This project is a Foxhole game artillery calculator designed to assist players i
 - There are two ways you can use this tool, for static or dynamic spotting.
 - __Generating a static firing solution__:
   - Generating a static firing solution is very simple.
-  - Step 1: Input the angle & distance from the spotter to the target and press the calculate button.
-  - Step 2: The calculator will display the necessary information for your artillery shot (Ignore flipped azimuth when spotting staticly).
+  - **Step 1:** Input the angle & distance from the spotter to the target and press the calculate button.
+  - **Step 2:** The calculator will display the necessary information for your artillery shot (Ignore flipped azimuth when spotting staticly).
   - Note: When spotting staticly your spotters max targeting range will be 250m as the binoculars only have a range of 125m (dynamic spotting is recommended for 150mm).
 
-- Dynamic spotting:
+- __Dynamic spotting__:
   - Dynamic spotting on the other hand is not as simple but will allow you to advance your spotter as far away from the cannon as needed.
-  - Step 1: Input the spotters initial measurments as though you're setting up a static shot but instead of selecting a target the spotter should select the next position that they intend to measure from.
-  - Step 2: After calculating the solution change the "Azimuth to GUN" input to the "FLIPPED azimuth" result, and the "Distance to GUN" to the "Firing distance" result, but don't press calculate yet (ignore the target azimuth and distance for now, we will update them in a moment).
-  - Step 3: Now move to exactly the next position that you selected in "Step 1".
+  - **Step 1:** Input the spotters initial measurments as though you're setting up a static shot but instead of selecting a target the spotter should select the next position that they intend to measure from.
+  - **Step 2:** After calculating the solution change the "Azimuth to GUN" input to the "FLIPPED azimuth" result, and the "Distance to GUN" to the "Firing distance" result, but don't press calculate yet (ignore the target azimuth and distance for now, we will update them in a moment).
+  - **Step 3:** Now move to exactly the next position that you selected in "Step 1".
     - If you wish to fire from this position, select and input a target azimuth and distance from where you are and fire on the new firing distance and azimuth.
     - Otherwise if you want to advance to another position, set the target azimuth and distance to the measurments of the new position, calculate and repeat from "Step 2" until ready to fire.
 
