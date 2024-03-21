@@ -23,7 +23,7 @@ This project is a Foxhole game artillery calculator designed to assist players i
   - Generating a static firing solution is very simple.
   - **Step 1:** Input the angle & distance from the spotter to the target and press the calculate button.
   - **Step 2:** The calculator will display the necessary information for your artillery shot (Ignore flipped azimuth when spotting staticly).
-  - Note: When spotting staticly your spotters max targeting range will be 250m as the binoculars only have a range of 125m (dynamic spotting is recommended for 150mm).
+  - **Note:** When spotting staticly your spotters max targeting range will be 250m as the binoculars only have a range of 125m (dynamic spotting is recommended for 150mm).
 
 - __Dynamic spotting__:
   - Dynamic spotting on the other hand is not as simple but will allow you to advance your spotter as far away from the cannon as needed.
