@@ -30,6 +30,7 @@ class Line(start, end):
     
     def get(self):
         return self.start, self.end
+    
          
 class Angle(value):
     def __init__(self):

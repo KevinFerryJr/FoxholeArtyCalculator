@@ -9,7 +9,7 @@ class PygameWindow:
     def __init__(self, title, screenWidth, screenHeight):
         self.width = screenWidth
         self.height = screenHeight
-        self.title = "Pygame Window"
+        self.title = title
         
     def update(self):
         self.camera.update(self.grid)
@@ -38,29 +38,29 @@ class PygameWindow:
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_LEFT]:
-            self.camera.move(1, 0, self.grid)
+            self.camera.move(1, 0)
         if keys[pygame.K_RIGHT]:
-            self.camera.move(-1, 0, self.grid)
+            self.camera.move(-1, 0)
         if keys[pygame.K_UP]:
-            self.camera.move(0, 1, self.grid)
+            self.camera.move(0, 1)
         if keys[pygame.K_DOWN]:
-            self.camera.move(0, -1, self.grid)
+            self.camera.move(0, -1)
             
         if keys[pygame.K_a]:
-            self.camera.move(1, 0, self.grid)
+            self.camera.move(1, 0)
         if keys[pygame.K_d]:
-            self.camera.move(-1, 0, self.grid)
+            self.camera.move(-1, 0)
         if keys[pygame.K_w]:
-            self.camera.move(0, 1, self.grid)
+            self.camera.move(0, 1)
         if keys[pygame.K_s]:
-            self.camera.move(0, -1, self.grid)        
+            self.camera.move(0, -1)        
 
     def handleEvents(self):
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 4:  # Scroll up
-                self.camera.zoom_in(self.grid)
+                self.camera.zoom_in()
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 5:  # Scroll down
-                self.camera.zoom_out(self.grid)
+                self.camera.zoom_out()
 
     def start(self):
         pygame.init()
