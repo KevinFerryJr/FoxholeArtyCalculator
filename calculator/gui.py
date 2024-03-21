@@ -15,7 +15,7 @@ def calculate(gunDistEntry, gunAzimEntry, targDistEntry, targAzimEntry, firingDi
     
     firingDistLabel.config(text=f"Firing Distance: {firingDist}")
     firingAzimLabel.config(text=f"Firing Azimuth: {firingAzim}")
-    #flippedAzimLabel.config(text=f"Flipped Azimuth: {flippedAzim}")
+    flippedAzimLabel.config(text=f"Flipped Azimuth: {flippedAzim}")
     return
 
 fgColor = (0, 0, 0)
@@ -101,6 +101,7 @@ calculateButton = TkButton(tkWindow.root, "Calculate", calcualteFn)
 #OUTPUT
 firingDist = TkLabel(tkWindow.root, "Firing Distance:")
 firinAzimuth = TkLabel(tkWindow.root, "Firing Azimuth:")
+flippedAzim = TkLabel(tkWindow.root, "Flipped Azimuth:")
 
 #FOOTER
 footer = TkLabel(tkWindow.root, "github.com/KevinFerryJr", padX=40, padY=6, fg=(150,150,150))
