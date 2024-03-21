@@ -31,7 +31,7 @@ This project is a Foxhole game artillery calculator designed to assist players i
   - Step 2: After calculating the solution change the "Azimuth to GUN" input to the "FLIPPED azimuth" result, and the "Distance to GUN" to the "Firing distance" result, but don't press calculate yet (ignore the target azimuth and distance for now, we will update them in a moment).
   - Step 3 Now move to exactly the next position that you selected in "Step 1".
     - If you wish to fire from this position, select and input a target azimuth and distance from where you are and fire on the new firing distance and azimuth.
-      - Otherwise if you want to advance to another position, set the target azimuth and distance to the measurments of the new position, calculate and repeat from "Step 2" until ready to fire.
+    - Otherwise if you want to advance to another position, set the target azimuth and distance to the measurments of the new position, calculate and repeat from "Step 2" until ready to fire.
 
 ## Features
 - Calculate distance and azimuth to the target.
