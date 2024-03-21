@@ -30,7 +30,7 @@ This project is a Foxhole game artillery calculator designed to assist players i
   - Dynamic spotting on the other hand is not as simple but will allow you to advance your spotter as far away from the cannon as needed.
   - **Step 1:** Input the spotters initial measurments as though you're setting up a static shot but instead of selecting a target the spotter should select the next position that they intend to measure from.
   - **Step 2:** After calculating the solution change the "Azimuth to GUN" input to the "FLIPPED azimuth" result, and the "Distance to GUN" to the "Firing distance" result, but don't press calculate yet (ignore the target azimuth and distance for now, we will update them in a moment).
-  - **Step 3:** Now move to exactly the next position that you selected in "Step 1".
+  - **Step 3:** Now move exactly to the position you chose to measure from previously.
     - If you wish to fire from this position, select and input a target azimuth and distance from where you are and fire on the new firing distance and azimuth.
     - Otherwise if you want to advance to another position, set the target azimuth and distance to the measurments of the new position, calculate and repeat from "Step 2" until ready to fire.
 
