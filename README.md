@@ -1,6 +1,6 @@
 # Foxhole Game Artillery Calculator
 
-This project is a Foxhole game artillery calculator designed to assist players in calculating accurate artillery shots within the game.
+This project is a Foxhole game artillery calculator designed to assist players in calculating accurate artillery inputs within the game.
 
 ## How to Use the Artillery Calculator
 
